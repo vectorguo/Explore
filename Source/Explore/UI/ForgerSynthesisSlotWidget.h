@@ -28,4 +28,16 @@ public:
 	void InitializeData(const struct FTableEquipmentSynthesisRowData* Config);
 
 protected:
+
+	/**
+	 * @brief 按钮点击回调
+	 */
+	UFUNCTION(BlueprintCallable)
+	void OnClickSynth();
+
+private:
+	/**
+	 * @brief 合成结果的TID
+	 */
+	int32 SynthResultTid;
 };

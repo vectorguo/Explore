@@ -61,11 +61,6 @@ private:
 	 */
 	void TakeOffEquipment();
 
-	/**
-	 * @brief 合成装备
-	 */
-	void SynthEquipment();
-
 protected:
 	/**
 	 * @brief Slot数据

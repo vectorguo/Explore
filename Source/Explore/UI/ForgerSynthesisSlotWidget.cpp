@@ -24,6 +24,8 @@ bool UForgerSynthesisSlotWidget::Initialize()
 
 void UForgerSynthesisSlotWidget::InitializeData(const FTableEquipmentSynthesisRowData* Config)
 {
+	SynthResultTid = Config->EquipmentTid;
+
 	//名称
 	auto* NameTxt = Cast<UTextBlock>(GetWidgetFromName(TEXT("TxtName")));
 	NameTxt->SetText(FText::FromString(Config->Name));
@@ -77,4 +79,23 @@ void UForgerSynthesisSlotWidget::InitializeData(const FTableEquipmentSynthesisRo
 			}
 		}
 	}
+}
+
+void UForgerSynthesisSlotWidget::OnClickSynth()
+{
+	//合成装备
+	if (auto* MainHero = UExploreGameManager::GetInstance()->GetMainHero())
+	{
+		for (auto Iter = FTableEquipmentSynthesis::GetRows()->CreateConstIterator(); Iter; ++Iter)
+		{
+			if (Iter->Value->EquipmentTid == SynthResultTid)
+			{
+				MainHero->GetBackpack()->SynthEquipmentInBackpack(Iter->Key);
+			}
+		}
+	}
+
+	//刷新Forger界面
+
+
 }

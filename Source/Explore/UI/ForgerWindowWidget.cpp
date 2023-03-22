@@ -45,7 +45,7 @@ void UForgerWindowWidget::NativeConstruct()
 			auto* SlotWidget = CreateWidget<UForgerSynthesisSlotWidget>(WindowOwner, ForgerSynthesisSlotClass);
 			SlotWidget->InitializeData(Iter->Value);
 			auto* VbSlot = SlotRoot->AddChildToVerticalBox(SlotWidget);
-			VbSlot->SetHorizontalAlignment(HAlign_Center);
+			VbSlot->SetHorizontalAlignment(HAlign_Left);
 			VbSlot->SetVerticalAlignment(VAlign_Fill);
 			if (bIsFirst)
 			{

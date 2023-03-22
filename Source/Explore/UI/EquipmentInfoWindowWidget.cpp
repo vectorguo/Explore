@@ -159,8 +159,7 @@ void UEquipmentInfoWindowWidget::InitializeData(const FBackpackSlotData* Data, E
 			SellBtnParent->SetVisibility(ESlateVisibility::Hidden);
 			break;
 		case EBackpackSlotContext::EBC_SynthResult:
-			OperationBtnParent->SetVisibility(ESlateVisibility::Visible);
-			OperationNameTxt->SetText(FText::FromString(TEXT("合成")));
+			OperationBtnParent->SetVisibility(ESlateVisibility::Hidden);
 			SellBtnParent->SetVisibility(ESlateVisibility::Hidden);
 			break;
 		default:
@@ -179,9 +178,6 @@ void UEquipmentInfoWindowWidget::OnClickOperation()
 		break;
 	case EBackpackSlotContext::EBC_Worn:
 		TakeOffEquipment();
-		break;
-	case EBackpackSlotContext::EBC_SynthResult:
-		SynthEquipment();
 		break;
 	default:
 		break;
@@ -231,27 +227,6 @@ void UEquipmentInfoWindowWidget::TakeOffEquipment()
 	{
 		HeroInfoWindow->Refresh();
 	}
-
-	//关闭当前界面
-	Close();
-}
-
-void UEquipmentInfoWindowWidget::SynthEquipment()
-{
-	//合成装备
-	if (auto* MainHero = UExploreGameManager::GetInstance()->GetMainHero())
-	{
-		for (auto Iter = FTableEquipmentSynthesis::GetRows()->CreateConstIterator(); Iter; ++Iter)
-		{
-			if (Iter->Value->EquipmentTid == EquipmentData->Tid)
-			{
-				MainHero->GetBackpack()->SynthEquipmentInBackpack(Iter->Key);
-			}
-		}
-	}
-
-	//刷新Forger界面
-	
 
 	//关闭当前界面
 	Close();
