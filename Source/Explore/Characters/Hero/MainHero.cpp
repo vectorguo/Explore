@@ -33,7 +33,7 @@ AMainHero::AMainHero()
 	//创建SprintArm
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 125.0f;
+	CameraBoom->TargetArmLength = 90.0f;
 	CameraBoom->bUsePawnControlRotation = true;
 
 	//创建跟随相机
