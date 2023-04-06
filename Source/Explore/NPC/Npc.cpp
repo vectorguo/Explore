@@ -3,7 +3,7 @@
 
 #include "Npc.h"
 
-#include "Components/SphereComponent.h"
+#include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
 #include "Explore/Characters/Hero/MainHero.h"
 #include "Explore/Characters/Hero/MainHeroBlackboard.h"
@@ -22,7 +22,7 @@ ANpc::ANpc()
 	Mesh->SetupAttachment(GetRootComponent());
 
 	//添加碰撞
-	CollisionVolume = CreateDefaultSubobject<USphereComponent>(TEXT("Collision"));
+	CollisionVolume = CreateDefaultSubobject<UBoxComponent>(TEXT("Collision"));
 	CollisionVolume->SetupAttachment(GetRootComponent());
 
 	//创建UI Widget

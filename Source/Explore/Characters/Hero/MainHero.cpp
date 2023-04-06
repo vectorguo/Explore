@@ -53,8 +53,8 @@ void AMainHero::BeginPlay()
 	auto* Movement = Cast<UCharacterMovementComponent>(GetMovementComponent());
 	if (Movement)
 	{
-		Movement->MaxWalkSpeed = 100.0f;
-		Movement->MaxWalkSpeedCrouched = 100.0f;
+		Movement->MaxWalkSpeed = 50.0f;
+		Movement->MaxWalkSpeedCrouched = 50.0f;
 	}
 
 	//初始化碰撞
