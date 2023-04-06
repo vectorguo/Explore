@@ -117,6 +117,11 @@ public:
 	{
 		return CameraBoom;
 	}
+
+	/**
+	 * @brief 增加相机与角色之间的距离
+	 */
+	void AddCameraArmLength(float DeltaLength);
 	
 	/**
 	 * @brief 获取跟随相机

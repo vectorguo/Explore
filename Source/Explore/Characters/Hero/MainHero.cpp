@@ -33,7 +33,7 @@ AMainHero::AMainHero()
 	//创建SprintArm
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 90.0f;
+	CameraBoom->TargetArmLength = 75.0f;
 	CameraBoom->bUsePawnControlRotation = true;
 
 	//创建跟随相机
@@ -256,4 +256,9 @@ void AMainHero::UseItem(const FBackpackSlotData* InItemData)
 
 	//从背包中移除Item
 	Backpack->RemoveItemFromBackpack(InItemData->Guid);
+}
+
+void AMainHero::AddCameraArmLength(float DeltaLength)
+{
+	CameraBoom->TargetArmLength = FMath::Clamp(CameraBoom->TargetArmLength + DeltaLength, 40.0f, 120.0f);
 }

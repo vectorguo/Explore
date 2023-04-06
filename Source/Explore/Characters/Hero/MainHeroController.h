@@ -67,6 +67,11 @@ private:
 	void LookUpAtRate(float Value);
 
 	/**
+	 * @brief 相机拉近拉远
+	 */
+	void OnCameraZoom(float Value);
+
+	/**
 	 * @brief 冲刺
 	 */
 	void Sprint();

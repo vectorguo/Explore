@@ -46,6 +46,7 @@ void AMainHeroController::SetupInputComponent()
 	InputComponent->BindAxis("LookUp", this, &AMainHeroController::AddControllerPitchInput);
 	InputComponent->BindAxis("TurnRate", this, &AMainHeroController::TurnAtRate);
 	InputComponent->BindAxis("LookUpRate", this, &AMainHeroController::LookUpAtRate);
+	InputComponent->BindAxis("Zoom", this, &AMainHeroController::OnCameraZoom);
 }
 
 void AMainHeroController::Tick(float DeltaSeconds)
@@ -146,6 +147,14 @@ void AMainHeroController::LookUpAtRate(float Value)
 {
 	const auto DeltaTime = GetWorld()->GetDeltaSeconds();
 	AddControllerPitchInput(Value * BaseTurnRate * DeltaTime);
+}
+
+void AMainHeroController::OnCameraZoom(float Value)
+{
+	if (OwnerHero)
+	{
+		OwnerHero->AddCameraArmLength(Value);
+	}
 }
 
 void AMainHeroController::Sprint()
