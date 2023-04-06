@@ -45,7 +45,7 @@ protected:
 	 * @brief 碰撞盒
 	 */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="NPC | Collision")
-	class USphereComponent* CollisionVolume;
+	class UBoxComponent* CollisionVolume;
 
 	/**
 	 * @brief UIWidget
