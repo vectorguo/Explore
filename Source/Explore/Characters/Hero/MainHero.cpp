@@ -233,23 +233,30 @@ bool AMainHero::HasEquipment(EEquipmentPart Part) const
 
 void AMainHero::ArmWeaponFacade()
 {
-	bHasArmedFacade = true;
+	bArmingOrDisarmingFacade = true;
 
 	auto* TimelineManager = UExploreGameManager::GetInstance()->GetTimelineManager();
-	TimelineManager->PlayTimeline(11, 1, this);
+	TimelineManager->PlayTimeline(11, 1, this, this, &AMainHero::OnArmWeaponFacadeEnd);
+}
+
+void AMainHero::OnArmWeaponFacadeEnd(int bNormal)
+{
+	bHasArmedFacade = true;
+	bArmingOrDisarmingFacade = false;
 }
 
 void AMainHero::DisarmWeaponFacade()
 {
-	bHasArmedFacade = false;
+	bArmingOrDisarmingFacade = true;
 
 	auto* TimelineManager = UExploreGameManager::GetInstance()->GetTimelineManager();
-	TimelineManager->PlayTimeline(12, 1, this);
+	TimelineManager->PlayTimeline(12, 1, this, this, &AMainHero::OnDisarmWeaponFacade);
 }
 
-bool AMainHero::HasArmedWeaponFacade() const
+void AMainHero::OnDisarmWeaponFacade(int bNormal)
 {
-	return bHasArmedFacade;
+	bHasArmedFacade = false;
+	bArmingOrDisarmingFacade = false;
 }
 
 void AMainHero::UseItem(const FBackpackSlotData* InItemData)

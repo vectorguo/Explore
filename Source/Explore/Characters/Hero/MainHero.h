@@ -94,15 +94,34 @@ public:
 	void ArmWeaponFacade();
 
 	/**
-	 * @brief 解除当前的武器外光
+	 * @brief 装备当前的武器外观结束
+	 */
+	void OnArmWeaponFacadeEnd(int bNormal);
+
+	/**
+	 * @brief 解除当前的武器外观
 	 */
 	void DisarmWeaponFacade();
+
+	/**
+	 * @brief 解除当前的武器外观结束
+	 */
+	void OnDisarmWeaponFacade(int bNormal);
 
 	/**
 	 * @brief 是否装备了武器外观
 	 */
 	UFUNCTION(BlueprintCallable)
-	bool HasArmedWeaponFacade() const;
+	bool HasArmedWeaponFacade() const
+	{
+		return bHasArmedFacade;
+	}
+
+	UFUNCTION(BlueprintCallable)
+	bool IsArmingOrDisarmingWeaponFacade() const
+	{
+		return bArmingOrDisarmingFacade;
+	}
 
 	/**
 	 * @brief 使用道具
@@ -173,6 +192,7 @@ private:
 	 * @brief 是否装备的外观
 	 */
 	bool bHasArmedFacade = false;
+	bool bArmingOrDisarmingFacade = false;
 
 	/**
 	 * @brief 英雄身上携带的所有道具
