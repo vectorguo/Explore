@@ -278,5 +278,5 @@ void AMainHero::UseItem(const FBackpackSlotData* InItemData)
 
 void AMainHero::AddCameraArmLength(float DeltaLength)
 {
-	CameraBoom->TargetArmLength = FMath::Clamp(CameraBoom->TargetArmLength + DeltaLength, 40.0f, 120.0f);
+	CameraBoom->TargetArmLength = FMath::Clamp(CameraBoom->TargetArmLength + DeltaLength, 30.0f, 120.0f);
 }

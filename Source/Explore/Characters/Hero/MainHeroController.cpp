@@ -84,7 +84,7 @@ void AMainHeroController::Tick(float DeltaSeconds)
 		Direction += FRotationMatrix(YawRotation2).GetUnitAxis(EAxis::Y) * MoveRightValue;
 
 		//依据Controller的Y轴朝向移动
-		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, OwnerHero->GetActorLocation() + Direction * 25);
+		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, OwnerHero->GetActorLocation() + Direction * 15);
 	}
 	else
 	{
