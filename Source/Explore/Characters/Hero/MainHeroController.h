@@ -106,6 +106,11 @@ private:
 	 */
 	void OnInteract();
 
+	/**
+	 * @brief 装备或者卸下武器
+	 */
+	void OnArmOrDisarm();
+
 private:
 	/**
 	 * @brief 所属英雄

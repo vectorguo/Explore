@@ -6,6 +6,7 @@
 #include "Explore/Table/TableTimeline.h"
 #include "Point/ExploreTimelinePoint.h"
 #include "Point/ExploreTimelinePointAnimation.h"
+#include "Point/ExploreTimelinePointArmWeaponFacade.h"
 #include "Point/ExploreTimelinePointDamage.h"
 #include "Point/ExploreTimelinePointEffect.h"
 #include "Point/ExploreTimelinePointEmpty.h"
@@ -41,6 +42,8 @@ UExploreTimelinePoint* UExploreTimelineTemplate::CreateTimelinePoint(int32 Point
 			return NewObject<UExploreTimelinePointShowCharacter>(this);
 		case 12:
 			return NewObject<UExploreTimelinePointHideCharacter>(this);
+		case 13:
+			return NewObject<UExploreTimelinePointArmWeaponFacade>(this);
 		default:
 			return nullptr;
 	}

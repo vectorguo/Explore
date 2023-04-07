@@ -39,6 +39,7 @@ void AMainHeroController::SetupInputComponent()
 	InputComponent->BindAction("RightMouseBtn", IE_Released, this, &AMainHeroController::OnRightMouseBtnUp);
 	InputComponent->BindAction("OpenBackpack", IE_Pressed, this, &AMainHeroController::OnOpenBackpack);
 	InputComponent->BindAction("Interact", IE_Pressed, this, &AMainHeroController::OnInteract);
+	InputComponent->BindAction("ArmOrDisarm", IE_Pressed, this, &AMainHeroController::OnArmOrDisarm);
 	
 	InputComponent->BindAxis("MoveForward", this, &AMainHeroController::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AMainHeroController::MoveRight);
@@ -224,5 +225,20 @@ void AMainHeroController::OnInteract()
 	if (auto* Npc = OwnerHero->GetBlackboard()->GetInteractiveNpc())
 	{
 		Npc->Interact();
+	}
+}
+
+void AMainHeroController::OnArmOrDisarm()
+{
+	if (OwnerHero)
+	{
+		if (OwnerHero->HasArmedWeaponFacade())
+		{
+			OwnerHero->DisarmWeaponFacade();
+		}
+		else
+		{
+			OwnerHero->ArmWeaponFacade();
+		}
 	}
 }

@@ -28,6 +28,14 @@ public:
 	void DestroyFacade();
 
 	/**
+	 * @brief 获取武器外观
+	 */
+	FORCEINLINE class ACharacterEquipmentFacade* GetWeaponFacade() const
+	{
+		return EquipmentFacade;
+	}
+
+	/**
 	 * @brief 添加装备效果
 	 */
 	void AddEquipmentEffect();

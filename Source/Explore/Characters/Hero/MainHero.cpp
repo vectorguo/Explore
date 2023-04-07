@@ -14,6 +14,7 @@
 #include "Explore/Table/TableEquipment.h"
 #include "Explore/Table/TableLevel.h"
 #include "Explore/Table/TableMonster.h"
+#include "Explore/Timeline/ExploreTimelineManager.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -182,6 +183,7 @@ void AMainHero::WearEquipment(const FBackpackSlotData* EquipmentData)
 	NewEquip->SetHeroOwner(this);
 	NewEquip->AddEquipmentEffect();
 	NewEquip->CreateFacade();
+	bHasArmedFacade = true;
 	EquipmentsMap.Emplace(EquipPart, NewEquip);
 	
 	//将装备从背包中移除
@@ -224,21 +226,30 @@ void AMainHero::TakeOffEquipment(EEquipmentPart Part)
 	}
 }
 
-bool AMainHero::HasEquipment(int32 EquipmentGuid) const
-{
-	for (auto Iter = EquipmentsMap.CreateConstIterator(); Iter; ++Iter)
-	{
-		if (Iter->Value->GetEquipmentGuid() == EquipmentGuid)
-		{
-			return true;
-		}
-	}
-	return false;
-}
-
 bool AMainHero::HasEquipment(EEquipmentPart Part) const
 {
 	return EquipmentsMap.Contains(Part);
+}
+
+void AMainHero::ArmWeaponFacade()
+{
+	bHasArmedFacade = true;
+
+	auto* TimelineManager = UExploreGameManager::GetInstance()->GetTimelineManager();
+	TimelineManager->PlayTimeline(11, 1, this);
+}
+
+void AMainHero::DisarmWeaponFacade()
+{
+	bHasArmedFacade = false;
+
+	auto* TimelineManager = UExploreGameManager::GetInstance()->GetTimelineManager();
+	TimelineManager->PlayTimeline(12, 1, this);
+}
+
+bool AMainHero::HasArmedWeaponFacade() const
+{
+	return bHasArmedFacade;
 }
 
 void AMainHero::UseItem(const FBackpackSlotData* InItemData)

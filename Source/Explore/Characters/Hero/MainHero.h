@@ -81,19 +81,28 @@ public:
 	void TakeOffEquipment(EEquipmentPart Part);
 
 	/**
-	 * @brief 是否装备了指定GUID的装备
-	 * @param EquipmentGuid 装备Guid
-	 * @return 是否装备
-	 */
-	bool HasEquipment(int32 EquipmentGuid) const;
-
-	/**
 	 * @brief 指定部位是否有装备
 	 * @param Part 装备部位
 	 * @return 是否装备
 	 */
 	UFUNCTION(BlueprintCallable)
 	bool HasEquipment(EEquipmentPart Part) const;
+
+	/**
+	 * @brief 装备当前的武器外观
+	 */
+	void ArmWeaponFacade();
+
+	/**
+	 * @brief 解除当前的武器外光
+	 */
+	void DisarmWeaponFacade();
+
+	/**
+	 * @brief 是否装备了武器外观
+	 */
+	UFUNCTION(BlueprintCallable)
+	bool HasArmedWeaponFacade() const;
 
 	/**
 	 * @brief 使用道具
@@ -159,6 +168,11 @@ private:
 	 */
 	UPROPERTY()
 	TMap<EEquipmentPart, UCharacterEquipment*> EquipmentsMap;
+
+	/**
+	 * @brief 是否装备的外观
+	 */
+	bool bHasArmedFacade = false;
 
 	/**
 	 * @brief 英雄身上携带的所有道具
