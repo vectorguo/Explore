@@ -236,7 +236,7 @@ void AMainHero::ArmWeaponFacade()
 	bArmingOrDisarmingFacade = true;
 
 	auto* TimelineManager = UExploreGameManager::GetInstance()->GetTimelineManager();
-	TimelineManager->PlayTimeline(11, 1, this, this, &AMainHero::OnArmWeaponFacadeEnd);
+	TimelineManager->PlayTimeline(11, 1.5f, this, this, &AMainHero::OnArmWeaponFacadeEnd);
 }
 
 void AMainHero::OnArmWeaponFacadeEnd(int bNormal)
@@ -250,7 +250,7 @@ void AMainHero::DisarmWeaponFacade()
 	bArmingOrDisarmingFacade = true;
 
 	auto* TimelineManager = UExploreGameManager::GetInstance()->GetTimelineManager();
-	TimelineManager->PlayTimeline(12, 1, this, this, &AMainHero::OnDisarmWeaponFacade);
+	TimelineManager->PlayTimeline(12, 1.5f, this, this, &AMainHero::OnDisarmWeaponFacade);
 }
 
 void AMainHero::OnDisarmWeaponFacade(int bNormal)
