@@ -26,6 +26,10 @@
 		{
 			"Name": "Landmass",
 			"Enabled": true
+		},
+		{
+			"Name": "CustomShaderPlugin",
+			"Enabled": false
 		}
 	]
 }
